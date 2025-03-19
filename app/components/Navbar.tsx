@@ -1,23 +1,61 @@
+"use client";
+
+import { useState } from "react";
+import Link from "next/link";
+import { Menu, X } from "lucide-react"; // Íconos para el menú
+
 const Navbar = () => {
-    return (
-      <header className="p-4 bg-white shadow-md">
-        <nav className="max-w-6xl mx-auto flex justify-between items-center">
-          <h1 className="text-2xl font-bold text-green-600">Layoff Talent Hub</h1>
-          <div className="space-x-4">
-            <a href="#" className="text-gray-600 hover:text-green-600">
+  const [isOpen, setIsOpen] = useState(false);
+
+  return (
+    <header className="bg-white shadow-md fixed w-full z-50">
+      <div className="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
+        <Link href="/" className="text-green-700 font-bold text-xl">
+          Layoff Talent Hub
+        </Link>
+
+        {/* Menú de navegación en pantallas grandes */}
+        <nav className="hidden md:flex space-x-6">
+          <Link href="/" className="text-gray-700 hover:text-green-600">
+            Inicio
+          </Link>
+          <Link href="/about" className="text-gray-700 hover:text-green-600">
+            Sobre Nosotros
+          </Link>
+          <Link href="/contact" className="text-gray-700 hover:text-green-600">
+            Contacto
+          </Link>
+        </nav>
+
+        {/* Botón de menú en móviles */}
+        <button
+          onClick={() => setIsOpen(!isOpen)}
+          className="md:hidden text-gray-700"
+        >
+          {isOpen ? <X size={28} /> : <Menu size={28} />}
+        </button>
+      </div>
+
+      {/* Menú desplegable en móviles */}
+      {isOpen && (
+        <nav className="md:hidden bg-white shadow-md absolute w-full left-0 top-16">
+          <div className="flex flex-col space-y-4 p-4">
+            <Link href="/" className="text-gray-700 hover:text-green-600">
               Inicio
-            </a>
-            <a href="#" className="text-gray-600 hover:text-green-600">
+            </Link>
+            <Link href="/about" className="text-gray-700 hover:text-green-600">
               Sobre Nosotros
-            </a>
-            <a href="#" className="text-gray-600 hover:text-green-600">
+            </Link>
+            <Link href="/contact" className="text-gray-700 hover:text-green-600">
               Contacto
-            </a>
+            </Link>
           </div>
         </nav>
-      </header>
-    );
-  };
-  
-  export default Navbar;
+      )}
+    </header>
+  );
+};
+
+export default Navbar;
+
   
