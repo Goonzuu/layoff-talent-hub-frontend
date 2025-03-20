@@ -19,15 +19,10 @@ const Navbar = () => {
           <Link href="/" className="text-gray-700 hover:text-green-600">
             Inicio
           </Link>
-          <Link href="/about" className="text-gray-700 hover:text-green-600">
-            Sobre Nosotros
-          </Link>
-          <Link href="/contact" className="text-gray-700 hover:text-green-600">
-            Contacto
-          </Link>
+          <Link href="/register" className="text-gray-600 hover:text-green-700">Registro</Link>
+          <Link href="/login" className="text-gray-600 hover:text-green-700">Login</Link>
         </nav>
 
-        {/* Botón de menú en móviles */}
         <button
           onClick={() => setIsOpen(!isOpen)}
           className="md:hidden text-gray-700"
@@ -36,19 +31,14 @@ const Navbar = () => {
         </button>
       </div>
 
-      {/* Menú desplegable en móviles */}
       {isOpen && (
         <nav className="md:hidden bg-white shadow-md absolute w-full left-0 top-16">
           <div className="flex flex-col space-y-4 p-4">
             <Link href="/" className="text-gray-700 hover:text-green-600">
               Inicio
             </Link>
-            <Link href="/about" className="text-gray-700 hover:text-green-600">
-              Sobre Nosotros
-            </Link>
-            <Link href="/contact" className="text-gray-700 hover:text-green-600">
-              Contacto
-            </Link>
+            <Link href="/register" className="text-gray-600 hover:text-green-700">Registro</Link>
+            <Link href="/login" className="text-gray-600 hover:text-green-700">Login</Link>
           </div>
         </nav>
       )}
@@ -57,5 +47,3 @@ const Navbar = () => {
 };
 
 export default Navbar;
-
-  
