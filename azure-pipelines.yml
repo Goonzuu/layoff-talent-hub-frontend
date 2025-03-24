@@ -7,16 +7,19 @@ pool:
   vmImage: 'ubuntu-latest'
 
 steps:
-  # Utilizar la versión correcta de Node.js
-  - task: UseNode@2
-    inputs:
-      version: '23.x'  # Ajustado para tu versión de Node.js
+  # Utilizar la versión de Node.js directamente desde NVM
+  - script: |
+      curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | bash
+      source ~/.nvm/nvm.sh
+      nvm install 23.10.0
+      node -v
+    displayName: 'Instalar Node.js v23.10.0'
 
   # Instalar dependencias
   - script: npm install
     displayName: 'Instalar dependencias'
 
-  # Ejecutar pruebas (opcional)
+  # Ejecutar pruebas (si tienes)
   - script: npm test
     displayName: 'Ejecutar pruebas'
 
@@ -28,6 +31,5 @@ steps:
   - task: AzureStaticWebApp@0
     inputs:
       app_location: './'  # Directorio raíz de la aplicación Next.js
-      output_location: '.next'  # Carpeta generada por Next.js después del build
-      api_location: ''  # Si tienes funciones o APIs, puedes especificarlo aquí
+      output_location: 'out'  # Carpeta generada por Next.js
       azure_static_web_apps_api_token: $(deployment_token)
