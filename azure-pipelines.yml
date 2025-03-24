@@ -1,0 +1,33 @@
+trigger:
+  branches:
+    include:
+      - develop  # Cambia por la rama que prefieras
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+steps:
+  # Utilizar la versión correcta de Node.js
+  - task: UseNode@2
+    inputs:
+      version: '23.x'  # Ajustado para tu versión de Node.js
+
+  # Instalar dependencias
+  - script: npm install
+    displayName: 'Instalar dependencias'
+
+  # Ejecutar pruebas (opcional)
+  - script: npm test
+    displayName: 'Ejecutar pruebas'
+
+  # Construir la aplicación Next.js
+  - script: npm run build
+    displayName: 'Construir aplicación'
+
+  # Desplegar en Azure Static Web Apps
+  - task: AzureStaticWebApp@0
+    inputs:
+      app_location: './'  # Directorio raíz de la aplicación Next.js
+      output_location: '.next'  # Carpeta generada por Next.js después del build
+      api_location: ''  # Si tienes funciones o APIs, puedes especificarlo aquí
+      azure_static_web_apps_api_token: $(deployment_token)
