@@ -1,5 +1,6 @@
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import ClientProvider from "@/components/ClientProvider";
 import "./globals.css";
 
 export const metadata = {
@@ -11,10 +12,13 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="es">
       <body className="font-sans antialiased">
-        <Navbar />
-        <main className="pt-20">{children}</main>
-        <Footer />
+        <ClientProvider>
+          <Navbar />
+          <main className="pt-20">{children}</main>
+          <Footer />
+        </ClientProvider>
       </body>
     </html>
   );
 }
+

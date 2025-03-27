@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { Menu, X } from "lucide-react"; // Íconos para el menú
+import { Menu, X } from "lucide-react";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -14,7 +14,6 @@ const Navbar = () => {
           Layoff Talent Hub
         </Link>
 
-        {/* Menú de navegación en pantallas grandes */}
         <nav className="hidden md:flex space-x-6">
           <Link href="/" className="text-gray-700 hover:text-green-600">
             Inicio
