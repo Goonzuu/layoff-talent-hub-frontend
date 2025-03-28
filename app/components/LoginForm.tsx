@@ -7,7 +7,7 @@ import useAuth from "@/hooks/useAuth";
 
 const LoginForm = () => {
   const router = useRouter();
-  const { login, isLoading, error } = useAuth();
+  const { login, isLoading, isError } = useAuth();
 
   const initialValues = {
     email: "",
@@ -45,7 +45,7 @@ const LoginForm = () => {
                 <Field type="password" name="password" className="w-full px-4 py-2 border rounded-md" />
                 <ErrorMessage name="password" component="div" className="text-red-500 text-sm" />
               </div>
-              {error && <p className="text-red-500 text-center mb-4">Credenciales incorrectas</p>}
+              {isError && <p className="text-red-500 text-center mb-4">Credenciales incorrectas</p>}
               <button
                 type="submit"
                 disabled={isLoading}
