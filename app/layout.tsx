@@ -14,7 +14,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body className="font-sans antialiased">
         <ClientProvider>
           <Navbar />
-          <main className="pt-20">{children}</main>
+            <main className="pt-20">{children}</main>
           <Footer />
         </ClientProvider>
       </body>
