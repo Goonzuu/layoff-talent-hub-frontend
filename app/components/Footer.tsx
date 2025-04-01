@@ -2,7 +2,7 @@ import Link from "next/link";
 
 const Footer = () => {
   return (
-    <footer className="bg-gray-800 text-white py-6 mt-12">
+    <footer className="bg-[#243346] text-white">
       <div className="max-w-6xl mx-auto px-6 text-center">
         <p className="text-lg font-semibold">Layoff Talent Hub © {new Date().getFullYear()}</p>
         <div className="mt-4 flex justify-center space-x-6">
@@ -19,5 +19,3 @@ const Footer = () => {
 };
 
 export default Footer;
-
-  

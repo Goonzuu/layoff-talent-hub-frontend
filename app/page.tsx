@@ -1,17 +1,15 @@
 import HeroSection from "@/components/HeroSection";
 import HowItWorks from "@/components/HowItWorks";
-import CallToAction from "@/components/CallToAction";
-import Testimonials from "@/components/Testimonials";
-import Companies from "./components/Companies";
+import FinalCallToAction from "./components/FinalCallToAction";
+import Footer from "./components/Footer";
 
 export default function Home() {
   return (
     <>
       <HeroSection />
       <HowItWorks />
-      <Companies />
-      <Testimonials />
-      <CallToAction />
+      <FinalCallToAction />
+      <Footer />
     </>
   );
 }
